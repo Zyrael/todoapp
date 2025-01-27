@@ -99,7 +99,7 @@ export default function TodoListTab() {
         <ScrollArea className='h-[calc(100vh-80px)]'>
           {currentTodoList && currentTodoList?.todos.length !== 0 ? (
             <div className='flex justify-center w-full'>
-              <Tabs defaultValue='all' className='w-[640px] flex flex-col'>
+              <Tabs defaultValue='all' className='w-full flex flex-col'>
                 <div className='flex justify-center mt-2 px-4 relative'>
                   <div className='flex items-center h-full absolute left-4'>
                     <span>Items left:&nbsp;{activeTodos.length}</span>
