@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 
 import Sidebar from '@/components/Sidebar';
 import TodoListTab from '@/components/TodoListTab';
-import { Button } from '@/components/ui/button';
 import { setTodos } from '@/lib/features/todos/todosSlice';
 import { useAppDispatch } from '@/lib/hooks';
 
