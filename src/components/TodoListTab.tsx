@@ -62,7 +62,7 @@ export default function TodoListTab() {
   };
 
   return (
-    <div className='h-screen w-full overflow-hidden border ml-[-1px]'>
+    <div className='h-full w-full overflow-hidden border md:ml-[-1px]'>
       <div className='px-8 overflow-hidden'>
         <div className='flex h-16 items-center justify-center relative'>
           <div className='flex w-[90%] justify-center items-center overflow-hidden'>

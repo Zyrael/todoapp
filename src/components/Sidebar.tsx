@@ -16,7 +16,11 @@ import {
 import { setShowTodaysTodos } from '@/lib/features/todos/todosSlice';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 
-export default function Sidebar() {
+type SidebarProps = {
+  handleCloseSidebar: () => void;
+};
+
+export default function Sidebar({ handleCloseSidebar }: SidebarProps) {
   const dispatch = useAppDispatch();
   const { currentTodoListId, todoLists, showTodaysTodos } = useAppSelector(
     (state) => state.todosSlice
@@ -25,6 +29,7 @@ export default function Sidebar() {
   const handleSetCurrentTodoList = (listId: string) => () => {
     dispatch(setCurrentTodoListId({ listId }));
     dispatch(setShowTodaysTodos({ showTodaysTodos: false }));
+    handleCloseSidebar();
   };
 
   const handleRemoveAllLists = () => {
@@ -34,10 +39,11 @@ export default function Sidebar() {
   const handleShowTodaysTodos = () => {
     dispatch(setShowTodaysTodos({ showTodaysTodos: true }));
     dispatch(setCurrentTodoListId({ listId: '' }));
+    handleCloseSidebar();
   };
 
   return (
-    <ScrollArea className='border min-w-96 h-screen overflow-auto overflow-x-hidden'>
+    <ScrollArea className='border w-full h-full overflow-auto overflow-x-hidden'>
       <div>
         <div className='flex items-center p-4'>
           <Button
@@ -50,7 +56,7 @@ export default function Sidebar() {
         </div>
         <Separator />
       </div>
-      <div className='flex flex-col gap-2 p-4 w-96'>
+      <div className='flex flex-col gap-2 p-4'>
         {todoLists.map((todoList) => {
           return (
             <Button
